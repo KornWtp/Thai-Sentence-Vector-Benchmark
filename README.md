@@ -23,9 +23,6 @@ Moreover, we provide the Thai sentence vector benchmark. We evaluate the Spearma
 # What about Supervised Learning?
 - We recommend [sentence-bert](https://github.com/UKPLab/sentence-transformers), which you can train with NLI, STS, triplet loss, contrastive loss, etc.
 
-# What about Unsupervised Learning and Distillation?
-- ConGen: https://github.com/KornWtp/ConGen (EMNLP'22)
-
 # Multilingual Representation?
 - My new work => CL-ReLKT: https://github.com/mrpeerat/CL-ReLKT (NAACL'22)
 
@@ -35,58 +32,308 @@ Moreover, we provide the Thai sentence vector benchmark. We evaluate the Spearma
 - For the easy-to-implement version: [Easy_Evaluation.ipynb](https://github.com/mrpeerat/Thai-Sentence-Vector-Benchmark/blob/main/STS_Evaluation/Easy_Evaluation.ipynb)
 - How to evaluate sentence representation on Google Colab: https://colab.research.google.com/github/mrpeerat/Thai-Sentence-Vector-Benchmark/blob/main/SentEval.ipynb
 
-| Base Model  | Spearman's Correlation (*100) | Supervised? |
-| ------------- | :-------------: | :-------------: |
-| [simcse-model-distil-m-bert](https://huggingface.co/mrp/simcse-model-distil-m-bert)  | 38.84  |
-| [simcse-model-m-bert-thai-cased](https://huggingface.co/mrp/simcse-model-m-bert-thai-cased)  | 39.26  | 
-| [simcse-model-wangchanberta](https://huggingface.co/mrp/simcse-model-wangchanberta)  | 52.66  | 
-| [simcse-model-roberta-base-thai](https://huggingface.co/mrp/simcse-model-roberta-base-thai)  | 62.60  | 
-| [distiluse-base-multilingual-cased-v2](https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2)  | 63.50  | :heavy_check_mark:
-| [paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2)  | 80.11  | :heavy_check_mark:
-| [ConGen-simcse-model-roberta-base-thai](https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai)  | 66.21  |
-| [ConGen-paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2/tree/main)  | 76.56  |
+<table>
+    <thead>
+        <tr>
+            <th>Parameters</th>
+            <th>Base Models</th>
+            <th>Spearman's Correlation (*100)</th>
+            <th>Supervised?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2><30M</td>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Tiny">ConGen-WangchanBERT-Tiny</a></td>
+            <td align="center">66.43</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Small">ConGen-WangchanBERT-Small</a></td>
+            <td align="center">70.65</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan=9>>100M</td>
+            <td><a href="https://huggingface.co/mrp/simcse-model-distil-m-bert">simcse-model-distil-m-bert</a></td>
+            <td align="center">38.84</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-m-bert-thai-cased">simcse-model-m-bert-thai-cased</a></td>
+            <td align="center">39.26 </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-wangchanberta">simcse-model-wangchanberta</a></td>
+            <td align="center">52.66</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-roberta-base-thai">simcse-model-roberta-base-thai</a></td>
+            <td align="center">62.60</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2">distiluse-base-multilingual-cased-v2</a></td>
+            <td align="center">63.50</td>
+            <td align="center">&#10004;</td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2">paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">80.11</td>
+            <td align="center">&#10004;</td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai">ConGen-simcse-model-roberta-base-thai</a></td>
+            <td align="center">66.21</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2">ConGen-paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">76.56</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
 
 # Thai transfer benchmark
 - We use [Wisesight](https://huggingface.co/datasets/wisesight_sentiment), [Wongnai](https://huggingface.co/datasets/wongnai_reviews), and [Generated review](https://huggingface.co/datasets/generated_reviews_enth) datasets.
 - How to evaluate: [Transfer_Evaluation](https://github.com/mrpeerat/Thai-Sentence-Vector-Benchmark/blob/main/Transfer_Evaluation/Transfer_Evaluation.ipynb)
 
 ## Wisesight
-| Base Model  | Acc (*100) | F1 (*100, weighted) | Supervised? |
-| ------------- | :-------------: | :-------------: | :-------------: |
-| [simcse-model-distil-m-bert](https://huggingface.co/mrp/simcse-model-distil-m-bert)  | 55.37  | 55.92  |
-| [simcse-model-m-bert-thai-cased](https://huggingface.co/mrp/simcse-model-m-bert-thai-cased)  | 56.72  | 56.95  |
-| [simcse-model-wangchanberta](https://huggingface.co/mrp/simcse-model-wangchanberta)  | 62.22  | 63.06  |
-| [simcse-model-roberta-base-thai](https://huggingface.co/mrp/simcse-model-roberta-base-thai)  | 61.96  | 62.48  | 
-| [distiluse-base-multilingual-cased-v2](https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2)  | 63.31  | 63.74  | :heavy_check_mark:
-| [paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2)  | 67.05  | 67.67  | :heavy_check_mark:
-| [ConGen-simcse-model-roberta-base-thai](https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai)  | 65.07  | 65.28  |
-| [ConGen-paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2/tree/main)  | 67.84  | 68.31  |
+<table>
+    <thead>
+        <tr>
+            <th>Parameters</th>
+            <th> Base Models</th>
+            <th>Acc (*100)</th>
+            <th>F1 (*100, weighted)</th>
+            <th>Supervised?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2><30M</td>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Tiny">ConGen-WangchanBERT-Tiny</a></td>
+            <td align="center">61.55</td>
+            <td align="center">62.19</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Small">ConGen-WangchanBERT-Small</a></td>
+            <td align="center">64.77</td>
+            <td align="center">65.30</td>
+            <td></td>
+        </tr>
+         <tr>
+            <td rowspan=9>>100M</td>
+            <td><a href="https://huggingface.co/mrp/simcse-model-distil-m-bert">simcse-model-distil-m-bert</a></td>
+            <td align="center">55.37</td>
+             <td align="center">55.92</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-m-bert-thai-cased">simcse-model-m-bert-thai-cased</a></td>
+            <td align="center">56.72</td> 
+            <td align="center">56.95</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-wangchanberta">simcse-model-wangchanberta</a></td>
+            <td align="center">62.22</td>
+            <td align="center">63.06</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-roberta-base-thai">simcse-model-roberta-base-thai</a></td>
+            <td align="center">61.96</td>
+            <td align="center">62.48</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2">distiluse-base-multilingual-cased-v2</a></td>
+            <td align="center">63.31</td>
+            <td align="center">63.74</td>
+            <td align="center">&#10004;</td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2">paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">67.05</td>
+            <td align="center">67.67</td>
+            <td align="center">&#10004;</td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai">ConGen-simcse-model-roberta-base-thai</a></td>
+            <td align="center">65.07</td>
+            <td align="center">65.28</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2">ConGen-paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">67.84</td>
+            <td align="center">68.31</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 
 ## Wongnai
-| Base Model  | Acc (*100) | F1 (*100, weighted) | Supervised? |
-| ------------- | :-------------: | :-------------: | :-------------: |
-| [simcse-model-distil-m-bert](https://huggingface.co/mrp/simcse-model-distil-m-bert)  | 36.56  | 37.31  |
-| [simcse-model-m-bert-thai-cased](https://huggingface.co/mrp/simcse-model-m-bert-thai-cased)  | 39.63  | 38.96  |
-| [simcse-model-wangchanberta](https://huggingface.co/mrp/simcse-model-wangchanberta)  | 41.38  | 37.46  |
-| [simcse-model-roberta-base-thai](https://huggingface.co/mrp/simcse-model-roberta-base-thai)  | 44.11  | 40.34  | 
-| [distiluse-base-multilingual-cased-v2](https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2)  | 37.76  | 40.07  | :heavy_check_mark:
-| [paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2)  | 45.20  | 46.72  | :heavy_check_mark:
-| [ConGen-simcse-model-roberta-base-thai](https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai)  | 41.32  | 41.57 |
-| [ConGen-paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2/tree/main)  | 47.22  | 48.63  |
-
-
+<table>
+    <thead>
+        <tr>
+            <th>Parameters</th>
+            <th> Base Models</th>
+            <th>Acc (*100)</th>
+            <th>F1 (*100, weighted)</th>
+            <th>Supervised?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2><30M</td>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Tiny">ConGen-WangchanBERT-Tiny</a></td>
+            <td align="center">42.67</td>
+            <td align="center">44.78</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Small">ConGen-WangchanBERT-Small</a></td>
+            <td align="center">43.38</td>
+            <td align="center">45.99</td>
+            <td></td>
+        </tr>
+         <tr>
+            <td rowspan=9>>100M</td>
+            <td><a href="https://huggingface.co/mrp/simcse-model-distil-m-bert">simcse-model-distil-m-bert</a></td>
+            <td align="center">36.56</td>
+             <td align="center">37.31</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-m-bert-thai-cased">simcse-model-m-bert-thai-cased</a></td>
+            <td align="center">39.63</td> 
+            <td align="center">38.96</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-wangchanberta">simcse-model-wangchanberta</a></td>
+            <td align="center">41.38</td>
+            <td align="center">37.46</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-roberta-base-thai">simcse-model-roberta-base-thai</a></td>
+            <td align="center">44.11</td>
+            <td align="center">40.34</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2">distiluse-base-multilingual-cased-v2</a></td>
+            <td align="center">37.76</td>
+            <td align="center">40.07</td>
+            <td align="center">&#10004;</td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2">paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">45.20</td>
+            <td align="center">46.72</td>
+            <td align="center">&#10004;</td>
+        </tr>
+         <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai">ConGen-simcse-model-roberta-base-thai</a></td>
+            <td align="center">41.32</td>
+            <td align="center">41.57</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2">ConGen-paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">47.22</td>
+            <td align="center">48.63</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 ## Generated Review
-| Base Model  | Acc (*100) | F1 (*100, weighted) | Supervised? |
-| ------------- | :-------------: | :-------------: | :-------------: |
-| [simcse-model-distil-m-bert](https://huggingface.co/mrp/simcse-model-distil-m-bert)  | 38.29  | 37.10  |
-| [simcse-model-m-bert-thai-cased](https://huggingface.co/mrp/simcse-model-m-bert-thai-cased)  | 38.30  | 36.63  |
-| [simcse-model-wangchanberta](https://huggingface.co/mrp/simcse-model-wangchanberta)  | 46.63  | 42.60  |
-| [simcse-model-roberta-base-thai](https://huggingface.co/mrp/simcse-model-roberta-base-thai)  | 42.93  | 42.81  | 
-| [distiluse-base-multilingual-cased-v2](https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2)  | 50.62  | 48.90  | :heavy_check_mark:
-| [paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2)  | 57.48  | 56.35  | :heavy_check_mark:
-| [ConGen-simcse-model-roberta-base-thai](https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai)  | 49.81  | 47.94 |
-| [ConGen-paraphrase-multilingual-mpnet-base-v2](https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2/tree/main)  | 58.00 | 56.80  |
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Parameters</th>
+            <th> Base Models</th>
+            <th>Acc (*100)</th>
+            <th>F1 (*100, weighted)</th>
+            <th>Supervised?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2><30M</td>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Tiny">ConGen-WangchanBERT-Tiny</a></td>
+            <td align="center">54.26</td>
+            <td align="center">52.69</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-WangchanBERT-Small">ConGen-WangchanBERT-Small</a></td>
+            <td align="center">58.22</td>
+            <td align="center">57.03</td>
+            <td></td>
+        </tr>
+         <tr>
+            <td rowspan=9>>100M</td>
+            <td><a href="https://huggingface.co/mrp/simcse-model-distil-m-bert">simcse-model-distil-m-bert</a></td>
+            <td align="center">38.29 </td>
+             <td align="center">37.10</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-m-bert-thai-cased">simcse-model-m-bert-thai-cased</a></td>
+            <td align="center">38.30</td> 
+            <td align="center">36.63</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-wangchanberta">simcse-model-wangchanberta</a></td>
+            <td align="center">46.63</td>
+            <td align="center">42.60</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/mrp/simcse-model-roberta-base-thai">simcse-model-roberta-base-thai</a></td>
+            <td align="center">42.93</td>
+            <td align="center">42.81</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v2">distiluse-base-multilingual-cased-v2</a></td>
+            <td align="center">50.62</td>
+            <td align="center">48.90</td>
+            <td align="center">&#10004;</td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2">paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">57.48</td>
+            <td align="center">56.35</td>
+            <td align="center">&#10004;</td>
+        </tr>
+         <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-simcse-model-roberta-base-thai">ConGen-simcse-model-roberta-base-thai</a></td>
+            <td align="center">49.81</td>
+            <td align="center">47.94</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://huggingface.co/kornwtp/ConGen-paraphrase-multilingual-mpnet-base-v2">ConGen-paraphrase-multilingual-mpnet-base-v2</a></td>
+            <td align="center">58.00</td>
+            <td align="center">56.80</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 
 # Thank you many codes from
